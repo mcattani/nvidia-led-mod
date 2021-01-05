@@ -1,0 +1,119 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,57)
+  Text = ("nvidia-led-mod")
+  Icon = Picture["icon.png"]
+  Resizable = False
+  { Label1 Label
+    MoveScaled(1,1,7,3)
+    Font = Font["Bold,Underline"]
+    Text = ("Modo:")
+  }
+  { sbValorBrillo SliderBox
+    MoveScaled(1,11,61,4)
+    ToolTip = ("Valor del brillo del LED")
+    Picture = Picture["icon.png"]
+  }
+  { Separator1 Separator
+    MoveScaled(1,9,62,1)
+  }
+  { txSalida TextArea
+    MoveScaled(1,37,62,4)
+    ToolTip = ("Muestra el comando enviado a la placa")
+    ReadOnly = True
+  }
+  { Separator2 Separator
+    MoveScaled(1,16,62,1)
+  }
+  { Panel1 Panel
+    MoveScaled(1,5,24.875,4.875)
+    { rbManual RadioButton
+      MoveScaled(0,0,11,4)
+      ToolTip = ("Modo manual de control del brillo del LED")
+      Text = ("Manual")
+    }
+    { rbAutomatico RadioButton
+      MoveScaled(11,0,13,4)
+      ToolTip = ("Modo automático de control del brillo del LED")
+      Text = ("Automático")
+    }
+  }
+  { Panel2 Panel
+    MoveScaled(1,19,32,4)
+    { rbFade RadioButton
+      MoveScaled(10,0,8,3)
+      ToolTip = ("Efecto Fade")
+      Text = ("Fade")
+    }
+    { rbRandom RadioButton
+      MoveScaled(19,0,11,3)
+      ToolTip = ("Efecto Random")
+      Text = ("Random")
+    }
+    { rbBlink RadioButton
+      MoveScaled(0,0,8,3)
+      ToolTip = ("Efecto blink")
+      Text = ("Blink")
+    }
+  }
+  { tRandom #Timer
+    #MoveScaled(56,30)
+    Delay = 500
+  }
+  { vbRandom VBox
+    MoveScaled(20,23,25,14)
+    Visible = False
+    { Label3 Label
+      MoveScaled(1,1,17,3)
+      Text = ("Cambiar cada:")
+    }
+    { sbRSegundos SpinBar
+      MoveScaled(1,5,20,5)
+      MaxValue = 60
+      MinValue = 0.5
+      Text = ("Segundos")
+    }
+  }
+  { tFade #Timer
+    #MoveScaled(47,30)
+    Delay = 100
+  }
+  { tFade2 #Timer
+    #MoveScaled(56,22)
+    Delay = 100
+  }
+  { vbBlink VBox
+    MoveScaled(1,23,25,14)
+    Visible = False
+    { Label2 Label
+      MoveScaled(1,1,17,3)
+      Text = ("Parpadea cada:")
+    }
+    { sbRSegundos2 SpinBar
+      MoveScaled(1,5,20,5)
+      MaxValue = 60
+      MinValue = 0.5
+      Text = ("Segundos")
+    }
+  }
+  { tBlink #Timer
+    #MoveScaled(47,22)
+    Delay = 500
+  }
+  { tBlink2 #Timer
+    #MoveScaled(52,17)
+    Delay = 500
+  }
+  { btAcerca Button
+    MoveScaled(37,47,16,6)
+    ToolTip = ("Muestra la información del creador")
+    Text = ("Acerca de") & "..."
+    Picture = Picture["icon:/24/find"]
+  }
+  { btSalir Button
+    MoveScaled(11,47,16,6)
+    Text = ("Salir")
+    Picture = Picture["icon:/24/close"]
+  }
+}

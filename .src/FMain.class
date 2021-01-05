@@ -1,0 +1,259 @@
+' Gambas class file
+
+Comando As String = "nvidia-settings --assign GPULogoBrightness="
+Valor As Integer 
+X As Integer
+
+
+Public Sub Form_Open()
+FMain.Text = Application.Name & " v" & Application.Version
+
+'Chequeamos que exista el programa
+If Not Exist("/usr/bin/nvidia-settings") Then
+  Message.Warning("Debe instalar 'nvidia-settings' para poder utilizar el programa")
+  Return
+ 
+Endif
+
+'Traemos las configuraciones guardadas de los valores si las hay
+sbValorBrillo.value = Settings["ValorManual", sbValorBrillo.Value]
+sbRSegundos.value = Settings["ValorSegundosRandom", sbRSegundos.value]
+sbRSegundos2.Value = Settings["ValorSegundosBlink", sbRSegundos2.Value]
+
+
+'Modo manual por defecto, desactivamos los efectos
+  rbBlink.Enabled = False
+  rbRandom.Enabled = False
+  rbFade.Enabled = False
+  
+' Iniciamos con todos los timers apagados
+tRandom.enabled = False
+tFade.Enabled = False
+tFade2.Enabled = False
+tBlink.Enabled = False
+tBlink2.Enabled = False
+
+
+End
+
+Public Sub Form_KeyPress()
+ 
+  If Key.code = Key.esc Then Quit
+  
+
+End
+
+Public Sub rbManual_Click()
+
+  sbValorBrillo.Enabled = True
+
+'Desactivamos los radio buttons y los timers en modo manual
+  rbBlink.Enabled = False
+  rbRandom.Enabled = False
+  rbFade.Enabled = False
+  tFade.Enabled = False
+  tRandom.Enabled = False
+  vbBlink.visible = False
+  tBlink.Enabled = False
+  tBlink2.Enabled = False
+   
+
+End
+
+Public Sub rbAutomatico_Click()
+
+  sbValorBrillo.Enabled = False
+  
+'Activamos los efectos en modo automático
+  rbBlink.Enabled = True
+  rbRandom.Enabled = True
+  rbFade.Enabled = True
+  
+
+End
+
+Public Sub sbValorBrillo_Change()
+Valor = sbValorBrillo.Value
+Dim Salida As String
+
+Try Shell (Comando & valor) To Salida
+If Error Then
+  Message.Warning(Error.code & Error.Text)
+  Return
+Endif
+
+txSalida.Text = salida & gb.CrLf
+
+End
+
+Public Sub rbRandom_Click()
+
+'Mostramos el panel y activamos el timer para el efecto Random
+tRandom.Enabled = True
+vbRandom.visible = True
+
+'Desactivamos los otros timers y efectos
+tFade.Enabled = False
+tFade.Enabled = False
+tFade2.Enabled = False
+vbBlink.Visible = False
+tBlink.Enabled = False
+tBlink2.Enabled = False
+  
+End
+
+Public Sub tRandom_Timer() ' Timer que nos da números aleatorios del 1-100 y los asigna como valor de brillo
+Valor = Rand(1, 100)
+
+Dim Salida As String
+
+Try Shell (Comando & valor) To Salida
+If Error Then
+  Message.Warning(Error.code & Error.Text)
+  Return
+Endif
+
+txSalida.Text = salida & gb.CrLf
+
+End
+
+Public Sub sbRSegundos_Change()
+
+  tRandom.Delay = sbRSegundos.Value * 1000 ' multiplicad por 1000 para que devuelva milisegundos
+  
+End
+
+Public Sub rbFade_Click()
+
+vbRandom.Visible = False
+tRandom.Enabled = False
+vbBlink.Visible = False
+tBlink.Enabled = False
+tBlink2.Enabled = False
+
+tFade.Enabled = True
+x = 0
+tFade.Enabled = True
+ 
+
+End
+
+Public Sub tFade_Timer() ' Encendido progresivo
+Dim Salida As String
+
+Try Shell (Comando & X) To Salida
+If Error Then
+  Message.Warning(Error.code & Error.Text)
+  Return
+Endif
+
+txSalida.Text = salida & gb.CrLf
+
+x = x + 2 ' Sumamos de a 2 para que sea más rapido el efecto
+
+If x = 100 Then
+  tFade2.Enabled = True
+  tFade.Enabled = False
+Endif
+
+
+End
+
+Public Sub tFade2_Timer() ' Fade apagado progresivo
+Dim Salida As String
+
+Try Shell (Comando & X) To Salida
+If Error Then
+  Message.Warning(Error.code & Error.Text)
+  Return
+Endif
+
+X = x - 2
+
+If x = 0 Then
+  tFade2.Enabled = False
+  tFade.Enabled = True
+Endif
+
+txSalida.Text = salida & gb.CrLf
+  
+End
+
+Public Sub rbBlink_Click()
+
+  vbBlink.visible = True
+  tBlink.Enabled = True
+  
+  ' Apagamos los demás timers y ocultamos el panel de segundos del timer
+  vbRandom.Visible = False
+  tFade2.Enabled = False
+  tFade.Enabled = False
+  tRandom.Enabled = False
+    
+  
+
+End
+
+Public Sub sbRSegundos2_Change() ' Asignamos los segundos elegidos (transformados a milisegundos) a ambos timers
+
+  tBlink.Delay = sbRSegundos2.Value * 1000
+  tBlink2.Delay = sbRSegundos2.Value * 1000
+      
+
+End
+
+Public Sub tBlink_Timer() 'Timer que enciende los LED al máximo
+Dim Salida As String
+
+Try Shell (Comando & 100) To Salida
+If Error Then
+  Message.Warning(Error.code & Error.Text)
+  Return
+Endif
+txSalida.Text = salida & gb.CrLf
+
+tBlink2.Enabled = True
+tBlink.Enabled = False
+
+End
+
+Public Sub tBlink2_Timer() 'Timer que apaga los LED
+Dim Salida As String
+
+Try Shell (Comando & 0) To Salida
+If Error Then
+  Message.Warning(Error.code & Error.Text)
+  Return
+Endif
+txSalida.Text = salida & gb.CrLf
+
+tBlink2.Enabled = False
+tBlink.Enabled = True
+
+End
+
+Public Sub btSalir_Click()
+GuardarValores()
+  Quit
+
+End
+
+Public Sub btAcerca_Click()
+
+  frmAbout.Show
+
+End
+
+Public Sub Form_Close()
+GuardarValores()
+
+End
+
+Public Sub GuardarValores()
+' Guardamos los valores de los segundos (en los efectos) y de la barra para cambiar el brillo de forma manual
+Settings["ValorManual"] = sbValorBrillo.Value
+Settings["ValorSegundosRandom"] = sbRSegundos.Value
+Settings["ValorSegundosBlink"] = sbRSegundos2.Value  
+    
+End
+

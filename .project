@@ -1,0 +1,26 @@
+# Gambas Project File 3.0
+Title=Nvidia - LED - Mod
+Startup=FMain
+Icon=icon.png
+Version=0.9.9
+Component=gb.image
+Component=gb.gtk3
+Component=gb.form
+Component=gb.desktop
+Component=gb.settings
+Description="Pequeña aplicación que utiliza el comando 'nvidia-settings' para modificar el brillo de los led de la placa de video."
+Authors="The Nerdy Apprentice"
+TabSize=2
+Language=es_AR
+Maintainer=TheNerdyApprentice
+Vendor=TheNerdyApprentice
+Address=marianocattani@gmail.com
+Url=https://thenerdyapprentice.blogspot.com/
+License=General Public License
+PackageName=nvidia-led-mod-0.9.9
+CreateEachDirectory=1
+Packager=1
+Systems=ubuntu
+Menus=ubuntu:"Applications/System/Hardware"
+Categories=ubuntu:"System"
+Groups=ubuntu:"admin"
