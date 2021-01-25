@@ -24,3 +24,5 @@ Systems=ubuntu
 Menus=ubuntu:"Applications/System/Hardware"
 Categories=ubuntu:"System"
 Groups=ubuntu:"admin"
+Tags=HardwareSettings,Video
+WebSite=https://thenerdyapprentice.blogspot.com/

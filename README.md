@@ -12,4 +12,4 @@ Una vez hecho esto, también agregue unos pequeños efectos... *¿por qué no?*
 
 > No tengo muy en claro que placas aeptan este comando, en mi caso tengo una **GeForce GTX 1050 Ti**.
 
-Para más información visitá mi blog: https://thenerdyapprentice.blogspot.com/
+Para más información visitá mi blog: https://thenerdyapprentice.blogspot.com/2021/01/nvidia-led-mod.html
