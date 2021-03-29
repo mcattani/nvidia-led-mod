@@ -2,7 +2,7 @@
 Title=Nvidia - LED - Mod
 Startup=FMain
 Icon=icon.png
-Version=0.9.9
+Version=0.10.9
 Component=gb.image
 Component=gb.gtk3
 Component=gb.form
@@ -17,7 +17,7 @@ Vendor=TheNerdyApprentice
 Address=marianocattani@gmail.com
 Url=https://thenerdyapprentice.blogspot.com/
 License=General Public License
-PackageName=nvidia-led-mod-0.9.9
+PackageName=nvidia-led-mod-0.10.9
 CreateEachDirectory=1
 Packager=1
 Systems=ubuntu

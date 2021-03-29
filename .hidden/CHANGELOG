@@ -1,3 +1,6 @@
+* Mon Mar 29 2021 TheNerdyApprentice <marianocattani@gmail.com> 0.10.9
+- Correción de error al pasar del modo "fade" al modo "manual"
+
 * Tue Jan 05 2021 TheNerdyApprentice <marianocattani@gmail.com> 0.9.9
 - Lanzamiento inicial
 

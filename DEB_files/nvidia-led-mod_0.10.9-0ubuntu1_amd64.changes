@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Mon, 29 Mar 2021 12:00:00 +0000
+Source: nvidia-led-mod
+Binary: nvidia-led-mod
+Architecture: source all
+Version: 0.10.9-0ubuntu1
+Distribution: unstable
+Urgency: low
+Maintainer: TheNerdyApprentice <marianocattani@gmail.com>
+Changed-By: TheNerdyApprentice <marianocattani@gmail.com>
+Description:
+ nvidia-led-mod - Pequeña aplicación que utiliza el comando 'nvidia-settings' pa...
+Changes:
+ nvidia-led-mod (0.10.9-0ubuntu1) unstable; urgency=low
+ .
+   * Correción de error al pasar del modo "fade" al modo "manual"
+Checksums-Sha1:
+ 7f24591a0485c6c6b8aa48821df10a1512d8a851 1206 nvidia-led-mod_0.10.9-0ubuntu1.dsc
+ 049dc32e5db38ec313203883fbf09ffc225eb342 1418 nvidia-led-mod_0.10.9-0ubuntu1.diff.gz
+ d5ec79deed584e6ba19998436bfb53849df21c57 187180 nvidia-led-mod_0.10.9-0ubuntu1_all.deb
+ 446be4024681ddd6c04939c647d071d4c65637ad 10037 nvidia-led-mod_0.10.9-0ubuntu1_amd64.buildinfo
+Checksums-Sha256:
+ a2d228233b101f9141bde3dd3b9e6316e0824b89180b572222a2129dcd99df45 1206 nvidia-led-mod_0.10.9-0ubuntu1.dsc
+ 6b6ec599a44c2ba247aff05e45cc75f70d05d828028f62ba2c7963305ce21275 1418 nvidia-led-mod_0.10.9-0ubuntu1.diff.gz
+ eb393a76aeec3dbc62432f6798a01593872a7a3b5d154caa94864ca7f01ca1c8 187180 nvidia-led-mod_0.10.9-0ubuntu1_all.deb
+ b1411a1edf931eed8b39462c037d2489512ad831775c142a9b1ea9f725f86de7 10037 nvidia-led-mod_0.10.9-0ubuntu1_amd64.buildinfo
+Files:
+ d5b88849cbedd5b83796500df49cc075 1206 contrib/admin optional nvidia-led-mod_0.10.9-0ubuntu1.dsc
+ bf95c0089ab38c63f68cffb1cfb998c7 1418 contrib/admin optional nvidia-led-mod_0.10.9-0ubuntu1.diff.gz
+ be93f6c67a9f27b747454971f8b95e24 187180 contrib/admin optional nvidia-led-mod_0.10.9-0ubuntu1_all.deb
+ ea2f326b0d3f63866fbe5bb3f30c7cf2 10037 contrib/admin optional nvidia-led-mod_0.10.9-0ubuntu1_amd64.buildinfo

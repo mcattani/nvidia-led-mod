@@ -1,4 +1,6 @@
 # nvidia-led-mod
+Versión actual: 0.10.9
+
 Pequeña aplicación para controlar el brillo del LED de algunas placas de video NVIDIA.
 
 Estuve buscando en internet alguna aplicación para controlar el brillo del LED de la placa de video (sé que esto puede hacerse sin problemas en *Windows* desde la aplicación de *NVIDIA*) pero no encontré nada parecido.
